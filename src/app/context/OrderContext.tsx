@@ -1,30 +1,5 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-
-export type Provision = {
-  id: string;
-  name: string;
-  description: string;
-  imageSource: string;
-  price: number;
-  category: string;
-};
-
-export type Dish = Provision & {
-  cousine: string;
-};
-
-export type Drink = Provision & {
-  brewer: string;
-};
-
-export type Order = {
-  id: number;
-  email: string;
-  dish: Dish;
-  drinks: Drink[];
-  count: number;
-  date: Date;
-};
+import { Order, Dish } from '../types';
 
 interface OrderContextType {
   order: Order;
@@ -39,16 +14,6 @@ const defaultDish: Dish = {
   price: 0,
   category: '',
   cousine: ''
-};
-
-const defaultDrink: Drink = {
-  id: '',
-  name: '',
-  description: '',
-  imageSource: '',
-  price: 0,
-  category: '',
-  brewer: ''
 };
 
 const defaultOrder: Order = {

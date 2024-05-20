@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useOrder } from './OrderContext';
+import { useRouter } from 'next/router';
+import { useOrder } from '../context/OrderContext';
 
 const DrinkPage = () => {
   const [drinks, setDrinks] = useState<any[]>([]);
   const [selectedDrink, setSelectedDrink] = useState<any>(null);
-  const navigate = useNavigate();
+  const router = useRouter();
   const { setOrder } = useOrder();
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const DrinkPage = () => {
           brewer: selectedDrink.strAlcoholic
         }]
       }));
-      navigate('/order');
+      router.push('/order');
     }
   };
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { fetchLatestOrder } from './api';
-import { useOrder } from './OrderContext';
+import { fetchLatestOrder } from '../api';
+import { useOrder } from '../context/OrderContext';
 
 const ReceiptPage = () => {
   const [order, setOrder] = useState<any>(null);

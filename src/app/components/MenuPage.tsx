@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useOrder } from './OrderContext';
+import { useRouter } from 'next/router';
+import { useOrder } from '../context/OrderContext';
 
 const MenuPage = () => {
   const [meal, setMeal] = useState<any>(null);
-  const navigate = useNavigate();
+  const router = useRouter();
   const { setOrder } = useOrder();
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const MenuPage = () => {
           cousine: meal.strArea
         }
       }));
-      navigate('/drink');
+      router.push('/drink');
     }
   };
 
@@ -54,5 +54,3 @@ const MenuPage = () => {
 };
 
 export default MenuPage;
-
-

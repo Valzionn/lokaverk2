@@ -1,9 +1,9 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useOrder } from './OrderContext';
+import { useRouter } from 'next/router';
+import { useOrder } from '../context/OrderContext';
 
 const HomePage = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const { setOrder } = useOrder();
 
   const startOrder = () => {
@@ -23,7 +23,7 @@ const HomePage = () => {
       count: 1,
       date: new Date()
     });
-    navigate('/menu');
+    router.push('/menu');
   };
 
   return (

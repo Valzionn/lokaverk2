@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { createOrder } from './api';
-import { useOrder } from './OrderContext';
+import { useRouter } from 'next/router';
+import { createOrder } from '../api';
+import { useOrder } from '../context/OrderContext';
 
 const OrderPage = () => {
   const [email, setEmail] = useState('');
   const [date, setDate] = useState('');
-  const navigate = useNavigate();
+  const router = useRouter();
   const { order, setOrder } = useOrder();
 
   const handleOrder = async () => {
@@ -23,7 +23,7 @@ const OrderPage = () => {
 
       await createOrder(updatedOrder);
       setOrder(updatedOrder);
-      navigate('/receipt');
+      router.push('/receipt');
     } catch (error) {
       console.error('Error placing order:', error);
     }
@@ -46,5 +46,3 @@ const OrderPage = () => {
 };
 
 export default OrderPage;
-
-
