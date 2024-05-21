@@ -1,6 +1,8 @@
+import { Order } from './types';
+
 const API_URL = 'http://localhost:3000/api/order';
 
-export const createOrder = async (order) => {
+export const createOrder = async (order: Order): Promise<any> => {
     const response = await fetch(API_URL, {
         method: 'POST',
         headers: {
@@ -11,7 +13,7 @@ export const createOrder = async (order) => {
     return response.json();
 };
 
-export const updateOrderById = async (id, order) => {
+export const updateOrderById = async (id: number, order: Order): Promise<any> => {
     const response = await fetch(`${API_URL}/${id}`, {
         method: 'PUT',
         headers: {
@@ -22,7 +24,7 @@ export const updateOrderById = async (id, order) => {
     return response.json();
 };
 
-export const updateOrderByEmail = async (email, order) => {
+export const updateOrderByEmail = async (email: string, order: Order): Promise<any> => {
     const response = await fetch(`${API_URL}/${email}`, {
         method: 'PUT',
         headers: {
@@ -33,19 +35,22 @@ export const updateOrderByEmail = async (email, order) => {
     return response.json();
 };
 
-export const getOrder = async (email) => {
+export const getOrder = async (email: string): Promise<Order | null> => {
     const response = await fetch(`${API_URL}/${email}`);
-    return response.json();
+    if (response.ok) {
+        return response.json();
+    }
+    return null;
 };
 
-export const deleteOrderById = async (id) => {
+export const deleteOrderById = async (id: number): Promise<any> => {
     const response = await fetch(`${API_URL}/${id}`, {
         method: 'DELETE',
     });
     return response.json();
 };
 
-export const deleteOrderByEmail = async (email) => {
+export const deleteOrderByEmail = async (email: string): Promise<any> => {
     const response = await fetch(`${API_URL}/${email}`, {
         method: 'DELETE',
     });
